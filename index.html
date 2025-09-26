@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>阅读器 · 云墨</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="章节导航">
+            <header class="sidebar-header">
+                <div class="book-cover" aria-hidden="true">
+                    <span class="cover-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" aria-hidden="true">
+                            <path d="M5 3H15.5C17.9853 3 20 5.01472 20 7.5V21" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 3V21H17" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+                <div class="book-meta">
+                    <h1 class="book-title">云墨书库</h1>
+                    <p class="book-author">虚拟作者</p>
+                </div>
+            </header>
+            <nav class="toc" role="navigation">
+                <h2 class="toc-title">目录</h2>
+                <ul class="toc-list" id="toc-list"></ul>
+            </nav>
+        </aside>
+
+        <main class="reader" role="main">
+            <header class="top-bar">
+                <button class="icon-button" id="menu-toggle" aria-label="展开或收起目录">
+                    <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" aria-hidden="true">
+                        <path d="M4 6H20" stroke-linecap="round"/>
+                        <path d="M4 12H16" stroke-linecap="round"/>
+                        <path d="M4 18H20" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="top-bar-meta">
+                    <span class="chapter-label" id="chapter-label">加载中…</span>
+                </div>
+                <div class="top-bar-actions" role="group" aria-label="阅读设置">
+                    <button class="icon-button" id="font-decrease" aria-label="减小字号">
+                        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" aria-hidden="true">
+                            <path d="M12 6L7 18" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10.5 9H13.5" stroke-linecap="round"/>
+                            <path d="M5 18H19" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <button class="icon-button" id="font-increase" aria-label="增大字号">
+                        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" aria-hidden="true">
+                            <path d="M12 6L7 18" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10.5 9H13.5" stroke-linecap="round"/>
+                            <path d="M12 9V12.5" stroke-linecap="round"/>
+                            <path d="M5 18H19" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <button class="icon-button" id="theme-toggle" aria-label="切换主题">
+                        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" aria-hidden="true">
+                            <path d="M12 3V5" stroke-linecap="round"/>
+                            <path d="M18.364 5.636L16.95 7.05" stroke-linecap="round"/>
+                            <path d="M21 12H19" stroke-linecap="round"/>
+                            <path d="M18.364 18.364L16.95 16.95" stroke-linecap="round"/>
+                            <path d="M12 21V19" stroke-linecap="round"/>
+                            <path d="M5.636 18.364L7.05 16.95" stroke-linecap="round"/>
+                            <path d="M3 12H5" stroke-linecap="round"/>
+                            <path d="M5.636 5.636L7.05 7.05" stroke-linecap="round"/>
+                            <circle cx="12" cy="12" r="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <section class="reading-area" aria-live="polite">
+                <article class="reading-surface" id="reader-content" tabindex="0" aria-label="小说正文"></article>
+            </section>
+
+            <footer class="bottom-bar">
+                <div class="progress" aria-label="阅读进度">
+                    <div class="progress-track">
+                        <span class="progress-bar" id="progress-bar"></span>
+                    </div>
+                    <span class="progress-label" id="progress-label">0%</span>
+                </div>
+                <div class="nav-controls" role="group" aria-label="章节导航">
+                    <button class="text-button" id="prev-chapter" aria-label="上一章">
+                        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" aria-hidden="true">
+                            <path d="M15 6L9 12L15 18" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>上一章</span>
+                    </button>
+                    <button class="text-button" id="next-chapter" aria-label="下一章">
+                        <span>下一章</span>
+                        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" aria-hidden="true">
+                            <path d="M9 6L15 12L9 18" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <template id="chapter-item-template">
+        <li>
+            <button class="toc-item" type="button"></button>
+        </li>
+    </template>
+
+    <script src="scripts.js" type="module"></script>
+</body>
+</html>
